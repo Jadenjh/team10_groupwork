@@ -1,21 +1,9 @@
-def permute(arr):
-    result = [arr[:]]
-    print(result)
-    c = [0] * len(arr)
-    print(c)
-    i = 0
-    while i < len(arr):
-        if c[i] < i:
-            if i % 2 == 0:
-                arr[0], arr[i] = arr[i], arr[0]
-            else:
-                arr[c[i]], arr[i] = arr[i], arr[c[i]]
-            result.append(arr[:])
-            c[i] += 1
-            i = 0
-        else:
-            c[i] = 0
-            i += 1
-    return result
-
-print(permute([1,2,3,4]))
+def Sol(n,df):
+    df.to_csv('output/result.csv',index = True)
+    f = open('output/result.csv', 'a')
+    for i in range(0,n):
+        print("기계 " + df.index[i] + ": 작업", min_per[i]+1)
+        f.write("기계 " + df.index[i] + "," + "작업 " + str(min_per[i]+1) + "\n")
+    print("최소비용 :", min)
+    f.write("최소비용," + str(min))
+    f.close()
